@@ -27,8 +27,8 @@ Tech Stack:
 Installation & Setup:
 ---------------------
 1. Clone the Repository:
-   git clone https://github.com/yourusername/library-management-system.git
-   cd library-management-system
+   git clone https://github.com/gauravt-cdac/django-library-management.git
+   cd library-management
 
 2. Set Up a Virtual Environment (if not already set):
    On Windows:
@@ -42,12 +42,12 @@ Installation & Setup:
 
    DATABASES = {
        'default': {
-           'ENGINE': 'django.db.backends.mysql',   # Database engine
-           'NAME': 'library_db',                     # Your database name
-           'USER': 'your_mysql_user',                # Your MySQL username
-           'PASSWORD': 'your_mysql_password',        # Your MySQL password
-           'HOST': 'localhost',                      # Change if using a remote database
-           'PORT': '3306',                           # Default MySQL port
+           'ENGINE':   'django.db.backends.mysql',     # Database engine
+           'NAME':     'library_db',                   # Your database name
+           'USER':     '*****',                        # Your MySQL username
+           'PASSWORD': '*****',                        # Your MySQL password
+           'HOST':     'localhost',                    # Change if using a remote database
+           'PORT':     '3306',                         # Default MySQL port
        }
    }
 
@@ -72,8 +72,8 @@ API Endpoints:
 --------------
 Authentication:
 ---------------
-- POST /api/admin/signup/   : Register a new admin
-- POST /api/admin/login/    : Admin login (returns token)
+- POST /signup/   : Register a new admin
+- POST /login/    : Admin login (returns token)
 
 Book Management (Admin):
 ------------------------
