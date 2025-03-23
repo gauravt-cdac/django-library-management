@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library Books</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background-color: #f4f4f4;
+        }
+        .navbar {
+            background: #4CAF50;
+            padding: 12px;
+            text-align: center;
+        }
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 15px;
+            display: inline-block;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+        .navbar a:hover {
+            background: #45a049;
+            border-radius: 5px;
+        }
+        .container {
+            max-width: 900px;
+            margin: 20px auto;
+            background: white;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+        }
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+        th, td {
+            padding: 12px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+        th {
+            background: #4CAF50;
+            color: white;
+        }
+        .no-books {
+            text-align: center;
+            color: gray;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ✅ Navbar Section -->
+    <div class="navbar">
+        <a href="{% url 'student_books' %}">View Books</a>
+        {% if user.is_authenticated %}
+            <a href="{% url 'admin_books' %}">Manage Books</a>
+            <a href="{% url 'add_book' %}">Add Book</a>
+            <a href="{% url 'logout' %}">Logout</a>
+        {% else %}
+            <a href="{% url 'admin_login' %}">Admin Login</a>
+        {% endif %}
+    </div>
+
+    <!-- ✅ Books Display Section -->
+    <div class="container">
+        <h2>Library Books</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Author</th>
+                    <th>Published Date</th>
+                    <th>ISBN</th>
+                    <th>Quantity</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for book in books %}
+                <tr>
+                    <td>{{ book.title }}</td>
+                    <td>{{ book.author }}</td>
+                    <td>{{ book.published_date }}</td>
+                    <td>{{ book.isbn }}</td>
+                    <td>{{ book.quantity }}</td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="5" class="no-books">No books available.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+</body>
+</html>
